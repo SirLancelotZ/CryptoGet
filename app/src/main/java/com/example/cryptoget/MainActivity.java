@@ -24,25 +24,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         GetData service = RetrofitClient.getRetrofitInstance().create(GetData.class);
-        Call<List<CryptoCurrencies>> call = service.getAllCryptoCurrencies();
-        call.enqueue(new Callback<List<CryptoCurrencies>>() {
+        Call<List<CryptoExchange>> call = service.getAllCryptoExchanges();
+        call.enqueue(new Callback<List<CryptoExchange>>() {
 
             @Override
-            public void onResponse(Call<List<CryptoCurrencies>> call, Response<List<CryptoCurrencies>> response) {
+            public void onResponse(Call<List<CryptoExchange>> call, Response<List<CryptoExchange>> response) {
                 loadDataList(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<CryptoCurrencies>> call, Throwable throwable) {
-                Toast.makeText(MainActivity.this, "Unable to load users", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<CryptoExchange>> call, Throwable throwable) {
+                Toast.makeText(MainActivity.this, "Unable to load data", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void loadDataList(List<CryptoCurrencies> usersList) {
+    private void loadDataList(List<CryptoExchange> cryptoList) {
 
         myRecyclerView = findViewById(R.id.myRecyclerView);
-        myAdapter = new MyAdapter(usersList);
+        myAdapter = new MyAdapter(cryptoList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         myRecyclerView.setLayoutManager(layoutManager);

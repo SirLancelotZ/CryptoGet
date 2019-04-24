@@ -11,9 +11,9 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> {
 
-    private List<CryptoCurrencies> dataList;
+    private List<CryptoExchange> dataList;
 
-    public MyAdapter(List<CryptoCurrencies> dataList){
+    public MyAdapter(List<CryptoExchange> dataList){
 
         this.dataList = dataList;
     }
@@ -25,12 +25,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
         public final View myView;
 
         TextView textUser;
+        TextView textUser2;
+        TextView textUser3;
+        TextView textUser4;
+        TextView textUser5;
+
+
 
         CustomViewHolder(View itemView) {
             super(itemView);
             myView = itemView;
 
             textUser = myView.findViewById(R.id.user);
+            textUser2 = myView.findViewById(R.id.user2);
+            textUser3 = myView.findViewById(R.id.user3);
+            textUser4 = myView.findViewById(R.id.user4);
+            textUser5 = myView.findViewById(R.id.user5);
+
 
         }
     }
@@ -49,7 +60,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
 
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         holder.textUser.setText(dataList.get(position).getCurrency());
+        holder.textUser2.setText(dataList.get(position).getActive_pairs());
 
+        holder.textUser3.setText(dataList.get(position).getVolume_usd());
+        holder.textUser4.setText(dataList.get(position).getCountry());
+        holder.textUser5.setText(dataList.get(position).getUrl());
 
 
     }

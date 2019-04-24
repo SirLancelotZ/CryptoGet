@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface GetData {
     @GET("/api/exchanges")
-    Call<List<CryptoCurrencies>> getAllCryptoCurrencies();
+    Call<List<CryptoExchange>> getAllCryptoExchanges();
 }
